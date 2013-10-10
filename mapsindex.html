@@ -5,8 +5,8 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
   html { height: 100% }
-  body { height: 100%; margin: 0px; padding: 0px }
-  #map_canvas { height: 100% }
+  body { height: 100%; margin: 20px; padding: 20px }
+#map_canvas{ height: 100% }
 </style>
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=false">
@@ -21,7 +21,7 @@
     var latlng = new google.maps.LatLng(37.369113, -122.036956);
 //    var marker  = createMarker(latlng,'Desired location');
     var myOptions = {
-      zoom: 10,
+      zoom: 12,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -74,7 +74,7 @@
         Address: <input type="text" id="inputTextAddress" style=" width:200px" title="Enter Address"/>
         <!--Create a button input for the user to click to geocode the address-->
         <input type="button" onclick="codeAddress()" id="inputButtonGeocode" style="width:150px" title="Find near me" value="Find spots" />
-        <div id="map_canvas" style="width:900px; height:600px"></div>
+        <div id="map_canvas" style="width:400px;height:600px"></div>
         </div>
     
 </body>
