@@ -1,0 +1,17 @@
+#content{
+	width: 54%;
+	float: left;
+	margin-right: 3%;
+}
+
+#sidebar-left{
+	width: 20%;
+	float: left;
+	margin-right: 3%;
+}
+
+#sidebar-right{
+	width: 20%;
+	float: left;
+}
+.sidebar-nav{display: none;}
