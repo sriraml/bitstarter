@@ -27,63 +27,53 @@ margin: auto
   </style>  
     
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-
-    <script>
-var map;
-
-function initialize() {
-  var mapOptions = {
-    zoom: 11,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map(document.getElementById('map_canvas'),
-      mapOptions);
-
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'Your location'
-      });
-
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+<script type="text/javascript">
+  //Declare the variable that will store the geocode object
+  var geocoder;
+  var map;
+  function initialize() {
+    //Set the geocoder variable equal to an instance of the google maps geocoder object as new google.maps.Geocoder()
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(37.369113, -122.036956);
+//    var marker  = createMarker(latlng,'Desired location');
+    var myOptions = {
+      zoom: 12,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+    new google.maps.Marker({
+        position: latlng,
+        map: map
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
   }
-}
+  //Add a second function to your javascript code, call it codeAddress.  It will not have any values passed to it.
+  function codeAddress() {
 
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
+    var sAddress = document.getElementById("inputTextAddress").value;
+   
+    geocoder.geocode( { 'address': sAddress}, function(results, status) {
+        
+        if (status == google.maps.GeocoderStatus.OK) {
+            
+            map.setCenter(results[0].geometry.location);
+            
+            var marker = new google.maps.Marker({
+                map: map, 
+                position: results[0].geometry.location
+            });
+        } else {
+            
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
   }
+</script>
 
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
 
   </head>
-  <body>
+  <body onload="initialize()">
    
     <!-- We use row-fluid inside containers to achieve a resizable layout. -->
     <!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
