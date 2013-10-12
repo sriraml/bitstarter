@@ -1,0 +1,12 @@
+#content{
+	width: 100%;
+}
+
+#sidebar-left{
+	display: none;
+}
+
+#sidebar-right{
+	display: none;
+}
+.sidebar-nav{display: inline;}
