@@ -20,5 +20,6 @@
 #map-canvas {
          width: 480px;
          height: 300px;
-    }
+         margin: 0 auto;
+}
     
