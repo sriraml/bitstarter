@@ -53,7 +53,12 @@
       }
 
       
-
+#map_canvas{
+      width:450px;
+      height:300px;
+      margin: 0 auto;
+      
+}
       /* Marketing Copy and Footer */
       .copy {
         padding-top: 2.5%;
