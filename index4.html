@@ -19,12 +19,6 @@
 
 <link rel="stylesheet" type="text/css" href="base.css" media="screen" />
 
-<style>
-     #map_canvas {
-         width: 480px;
-         height: 300px;
-    }
-    </style>
     
     
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
@@ -37,7 +31,7 @@ function initialize() {
     zoom: 11,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
+  map = new google.maps.Map(document.getElementById('map_canvas'),
       mapOptions);
 
   // Try HTML5 geolocation
